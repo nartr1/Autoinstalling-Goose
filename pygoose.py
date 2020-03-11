@@ -6,6 +6,8 @@ import zipfile
 import subprocess
 import platform
 import os
+import time
+
 
 cwd = os.getcwd()
 
@@ -45,7 +47,12 @@ with zipfile.ZipFile(".hidden_goose", 'r') as zip_ref:
 	zip_ref.extractall(".")
 
 if is_windows:
-	run_win_cmd("DesktopGoose v0.3/GooseDesktop.exe")
+	print(cwd)
+	#sleep(10)
+	#run_win_cmd(cwd+"DesktopGoose v0.3/GooseDesktop.exe")
+	os.chdir(cwd+"\DesktopGoose v0.3")
+	os.system("GooseDesktop.exe")
+	#os.startfile(cwd+"DesktopGoose v0.3\GooseDesktop.exe")
 else:
 	#subprocess.run("wine "+cwd+"/DesktopGoose\ v0.3/GooseDesktop.exe")
 	os.system("wine "+cwd+"/DesktopGoose\ v0.3/GooseDesktop.exe")
